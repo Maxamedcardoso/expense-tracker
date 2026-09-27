@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Dejinta aasaasiga ah ee bogga: xarfo, shaashad, cinwaan iyo faylasha dibadda. -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A simple dashboard for tracking everyday expenses.">
+    <title>Pennywise | Expense Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Madaxa bogga: magaca app-ka iyo xiriirrada qaybaha hoose. -->
+    <header>
+        <p>PERSONAL FINANCE</p>
+        <h1>Pennywise</h1>
+        <p>Your spending, made simple.</p>
+        <nav aria-label="Main navigation">
+            <a href="#overview">Overview</a>
+            <a href="#add-expense">Add expense</a>
+            <a href="#transactions">Transactions</a>
+        </nav>
+    </header>
+
+    <!-- Meesha ay ku jiraan dhammaan qaybaha muhiimka ah ee tracker-ka. -->
+    <main>
+        <!-- Soo koobidda kharashka, miisaaniyadda iyo lacagta hadhay. -->
+        <section id="overview" aria-labelledby="overview-heading">
+            <h2 id="overview-heading">Your overview</h2>
+            <p>September 2026</p>
+
+            <article aria-labelledby="spent-heading">
+                <h3 id="spent-heading">Spent this month</h3>
+                <p><data id="spent-total" value="1248.50">$1,248.50</data></p>
+            </article>
+            <article aria-labelledby="budget-heading">
+                <h3 id="budget-heading">Monthly budget</h3>
+                <p><data id="monthly-budget" value="2000">$2,000.00</data></p>
+            </article>
+            <article aria-labelledby="remaining-heading">
+                <h3 id="remaining-heading">Budget remaining</h3>
+                <p><data id="budget-remaining" value="751.50">$751.50</data></p>
+            </article>
+        </section>
+
+        <!-- Foomka lagu qoro xogta kharash cusub. -->
+        <section id="add-expense" aria-labelledby="add-expense-heading">
+            <h2 id="add-expense-heading">Add an expense</h2>
+            <form action="#transactions" method="get">
+                <p>
+                    <label for="expense-name">What did you spend on?</label>
+                    <input id="expense-name" name="expense" type="text" placeholder="e.g. Groceries" required>
+                </p>
+                <p>
+                    <label for="expense-amount">Amount</label>
+                    <input id="expense-amount" name="amount" type="number" min="0.01" step="0.01" placeholder="0.00"
+                        inputmode="decimal" required>
+                </p>
+                <p>
+                    <label for="expense-category">Category</label>
+                    <select id="expense-category" name="category" required>
+                        <option value="" selected disabled>Choose a category</option>
+                        <option value="food">Food &amp; drink</option>
+                        <option value="transport">Transport</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="bills">Bills</option>
+                        <option value="other">Other</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="expense-date">Date</label>
+                    <input id="expense-date" name="date" type="date" required>
+                </p>
+                <button type="submit">Add expense</button>
+            </form>
+        </section>
+
+        <!-- Jadwalka muujinaya kharashyada tusaalaha ah ee dhowaan dhacay. -->
+        <section id="transactions" aria-labelledby="transactions-heading">
+            <h2 id="transactions-heading">Recent expenses</h2>
+            <table>
+                <caption>Your latest recorded spending</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Expense</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Qoraalka gunaanadka ee bogga. -->
+    <footer>
+        <p>Simple spending, clearer choices.</p>
+    </footer>
+    <!-- defer wuxuu sugayaa inta HTML-ku dhammaanayo ka hor inta JavaScript-ku shaqayn. -->
+    <script src="script.js" defer></script>
+</body>
+
+</html>

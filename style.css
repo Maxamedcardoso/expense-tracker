@@ -1,0 +1,427 @@
+/* Doorsoomayaal midab iyo qoraal oo bogga oo dhan laga wada isticmaalo. */
+:root {
+    color-scheme: light;
+    font-family: "DM Sans", "Segoe UI", sans-serif;
+    color: #20342c;
+    background: #f5f5ef;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    --ink: #20342c;
+    --muted: #728078;
+    --green: #194437;
+    --green-light: #e8efe9;
+    --line: #e2e6de;
+    --paper: #ffffff;
+    --gold: #dfbd70;
+    --rust: #a64e38;
+}
+
+/* Cabbirrada dhammaan walxaha waxaa lagu xisaabiyaa xadka sanduuqa. */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Muuqaalka guud ee bogga: asalka, midabka qoraalka iyo kala-fogaanta. */
+body {
+    min-width: 320px;
+    margin: 0;
+    background:
+        radial-gradient(ellipse at 12% 15%, rgb(223 189 112 / 12%), transparent 28rem),
+        #f5f5ef;
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Madaxa bogga wuxuu adeegsadaa Grid si magaca iyo navigation-ku isu dheellitirmaan. */
+header {
+    display: grid;
+    grid-template-areas:
+        "eyebrow nav"
+        "brand nav"
+        "tagline nav";
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 18px max(24px, calc((100vw - 1120px) / 2));
+    background: var(--green);
+    color: #fff;
+}
+
+header>p:first-child {
+    grid-area: eyebrow;
+    margin: 0 0 2px;
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
+
+header h1 {
+    grid-area: brand;
+    margin: 0;
+    font-size: 25px;
+    line-height: 1.15;
+}
+
+header>p:nth-of-type(2) {
+    grid-area: tagline;
+    margin: 3px 0 0;
+    color: #c8d8ce;
+    font-size: 13px;
+}
+
+/* Xiriirrada navigation-ka iyo muuqaalkooda marka la dul istaago ama la doorto. */
+nav {
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav a {
+    padding: 9px 12px;
+    border-radius: 5px;
+    color: #e3ebe5;
+    font-size: 13px;
+    text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    background: rgb(255 255 255 / 12%);
+    color: #fff;
+}
+
+/* Grid-ka weyn wuxuu dhigaa soo koobidda kore, foomka iyo jadwalka hoose. */
+main {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.88fr) minmax(0, 1.12fr);
+    gap: 28px;
+    width: min(1120px, calc(100% - 48px));
+    margin: 36px auto 56px;
+}
+
+section {
+    min-width: 0;
+    animation: arrive 420ms ease both;
+}
+
+/* Soo koobidda: saddex tiir oo muujinaya wadarta kharashka iyo miisaaniyadda. */
+#overview {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+#overview>h2,
+#add-expense>h2,
+#transactions>h2 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+#overview>h2 {
+    grid-column: 1 / 3;
+    align-self: center;
+}
+
+#overview>p {
+    grid-column: 3;
+    justify-self: end;
+    align-self: center;
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Kaararka tirooyinka iyo midabbada kala soocaya xog kasta. */
+#overview article {
+    min-height: 118px;
+    padding: 19px 20px;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background: var(--paper);
+}
+
+#overview article:first-of-type {
+    border-top: 3px solid var(--rust);
+}
+
+#overview article:nth-of-type(2) {
+    border-top: 3px solid #74917b;
+}
+
+#overview article:nth-of-type(3) {
+    border-top: 3px solid #d1aa4e;
+}
+
+#overview article h3 {
+    margin: 0 0 13px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+#overview article p {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+#add-expense,
+#transactions {
+    align-self: start;
+    padding-top: 3px;
+}
+
+/* Foomka: meelaha gelinta, xulashada qaybta, iyo badhanka gudbinta. */
+form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 14px;
+    margin-top: 18px;
+}
+
+form p {
+    min-width: 0;
+    margin: 0 0 14px;
+}
+
+form p:first-child,
+form p:nth-child(3),
+form button {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #46574e;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+input,
+select {
+    width: 100%;
+    min-height: 43px;
+    padding: 9px 11px;
+    border: 1px solid #d8ded6;
+    border-radius: 5px;
+    background: var(--paper);
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+}
+
+input::placeholder {
+    color: #9aa49d;
+}
+
+input:focus-visible,
+select:focus-visible {
+    border-color: #668876;
+    outline: 3px solid rgb(102 136 118 / 18%);
+}
+
+button {
+    min-height: 44px;
+    margin-top: 2px;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 5px;
+    background: var(--rust);
+    color: #fff;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    background: #8f402e;
+}
+
+button:focus-visible {
+    outline: 3px solid rgb(166 78 56 / 30%);
+    outline-offset: 3px;
+}
+
+/* Qaabka jadwalka kharashyada: cinwaanno, safaf iyo qiimayaal. */
+#transactions table {
+    width: 100%;
+    margin-top: 18px;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 12px;
+}
+
+caption {
+    margin-bottom: 8px;
+    color: var(--muted);
+    text-align: left;
+    font-size: 12px;
+}
+
+thead {
+    color: var(--muted);
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+th,
+td {
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--line);
+}
+
+thead th {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    font-weight: 600;
+}
+
+tbody th {
+    font-weight: 600;
+}
+
+tbody td {
+    color: #68766e;
+}
+
+tbody td:last-child {
+    color: var(--ink);
+    font-weight: 600;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+footer {
+    padding: 17px 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    text-align: center;
+    font-size: 12px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Dhaqdhaqaaq yar oo qaybaha bogga u muuqda marka boggu furmo. */
+@keyframes arrive {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Shaashadaha yaryar: navigation-ka iyo qaybaha bogga hal tiir ha noqdaan. */
+@media (max-width: 760px) {
+    header {
+        grid-template-areas:
+            "eyebrow"
+            "brand"
+            "tagline"
+            "nav";
+        grid-template-columns: 1fr;
+        gap: 2px;
+        padding: 18px 22px 14px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 3px;
+        margin: 12px -8px 0;
+    }
+
+    nav a {
+        padding: 8px;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        width: min(100% - 36px, 560px);
+        margin-top: 27px;
+    }
+
+    #overview {
+        grid-template-columns: 1fr 1fr;
+        gap: 11px;
+    }
+
+    #overview>h2 {
+        grid-column: 1;
+    }
+
+    #overview>p {
+        grid-column: 2;
+    }
+
+    #overview article:last-of-type {
+        grid-column: 1 / -1;
+        min-height: 96px;
+    }
+
+    #transactions {
+        overflow-x: auto;
+    }
+
+    #transactions table {
+        min-width: 460px;
+    }
+}
+
+/* Taleefannada aadka u yar: foomka ku hagaaji hal tiir. */
+@media (max-width: 420px) {
+    #overview article {
+        min-height: 105px;
+        padding: 15px;
+    }
+
+    #overview article p {
+        font-size: 22px;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    form p,
+    form p:first-child,
+    form p:nth-child(3),
+    form button {
+        grid-column: 1;
+    }
+}
+
+/* Haddii isticmaaluhu dhaqdhaqaaq-yare doorbido, dami animations-ka. */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
