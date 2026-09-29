@@ -8,7 +8,9 @@ function isValidExpense(expense) {
     typeof expense.id === "string" &&
     typeof expense.name === "string" &&
     expense.name.trim().length > 0 &&
-    ["food", "transport", "shopping", "bills", "other"].includes(expense.category) &&
+    ["food", "transport", "shopping", "bills", "other"].includes(
+      expense.category,
+    ) &&
     /^\d{4}-\d{2}-\d{2}$/.test(expense.date) &&
     Number.isFinite(Number(expense.amount)) &&
     Number(expense.amount) > 0
@@ -40,5 +42,5 @@ window.expenseStorage = {
       console.warn("Kharashyada lama kaydin karin localStorage-ka.", error);
       return false;
     }
-  }
+  },
 };

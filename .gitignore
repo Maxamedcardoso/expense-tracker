@@ -1,0 +1,26 @@
+# Faylasha nidaamka hawlgalka
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Faylasha ku-meelgaarka ah ee editor-ka
+*.swp
+*.swo
+*~
+
+# Logs iyo debug output
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Dependencies iyo faylasha build-ka haddii mustaqbalka lagu daro
+node_modules/
+dist/
+build/
+coverage/
+
+# Deegaanka iyo xogaha sirta ah
+.env
+.env.*
+!.env.example

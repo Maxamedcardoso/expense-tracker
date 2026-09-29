@@ -99,16 +99,18 @@ function updateTotals(newTotal) {
 
 // Isku gee wadartii hore iyo kharashyada cusub ee la kaydiyey.
 function calculateSpentTotal() {
-  return initialSpentTotal + expenses.reduce(
-    (total, expense) => total + Number(expense.amount),
-    0,
+  return (
+    initialSpentTotal +
+    expenses.reduce((total, expense) => total + Number(expense.amount), 0)
   );
 }
 
 // Samee aqoonsi gaar ah si edit/delete u helaan kharashka saxda ah.
 function createExpenseId() {
-  return globalThis.crypto?.randomUUID?.()
-    || `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  return (
+    globalThis.crypto?.randomUUID?.() ||
+    `${Date.now()}-${Math.random().toString(16).slice(2)}`
+  );
 }
 
 // Soo celi kharashyada kaydsan marka boggu furmo.
@@ -190,7 +192,9 @@ expenseRows.addEventListener("click", (event) => {
   // Marka tirtiridda la xaqiijiyo, safka ka saar jadwalka oo sax wadarta.
   if (clickedButton.classList.contains("confirm-delete")) {
     row.remove();
-    const expenseIndex = expenses.findIndex((expense) => expense.id === row.dataset.id);
+    const expenseIndex = expenses.findIndex(
+      (expense) => expense.id === row.dataset.id,
+    );
     if (expenseIndex !== -1) expenses.splice(expenseIndex, 1);
     window.expenseStorage.save(expenses);
     updateTotals(calculateSpentTotal());
@@ -292,7 +296,9 @@ expenseRows.addEventListener("click", (event) => {
       date: dateInput.value,
       amount: newAmount,
     });
-    const expenseIndex = expenses.findIndex((expense) => expense.id === row.dataset.id);
+    const expenseIndex = expenses.findIndex(
+      (expense) => expense.id === row.dataset.id,
+    );
     if (expenseIndex !== -1) {
       expenses[expenseIndex] = {
         id: row.dataset.id,
