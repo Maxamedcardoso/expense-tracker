@@ -263,49 +263,257 @@ button:focus-visible {
 #transactions table {
     width: 100%;
     margin-top: 18px;
-    border-collapse: collapse;
+    min-width: 600px;
+    border: 1px solid var(--line);
+    border-spacing: 0;
+    border-radius: 7px;
+    overflow: hidden;
+    background: var(--paper);
     text-align: left;
     font-size: 12px;
+    table-layout: fixed;
 }
 
 caption {
-    margin-bottom: 8px;
+    padding: 0 0 11px;
     color: var(--muted);
     text-align: left;
     font-size: 12px;
 }
 
 thead {
-    color: var(--muted);
-    font-size: 10px;
-    text-transform: uppercase;
+    background: var(--green-light);
+    color: var(--green);
+    font-size: 11px;
 }
 
 th,
 td {
-    padding: 12px 8px;
+    padding: 13px 12px;
     border-bottom: 1px solid var(--line);
+    vertical-align: middle;
 }
 
 thead th {
-    padding-top: 9px;
-    padding-bottom: 9px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #cbd9cf;
     font-weight: 600;
+    white-space: nowrap;
 }
 
-tbody th {
-    font-weight: 600;
+thead th:nth-child(1) {
+    width: 25%;
 }
 
+thead th:nth-child(2) {
+    width: 19%;
+}
+
+thead th:nth-child(3) {
+    width: 20%;
+}
+
+thead th:nth-child(4) {
+    width: 14%;
+}
+
+thead th:nth-child(5) {
+    width: 22%;
+}
+
+/* Safafka xogta: midab cad, meel neefsasho iyo kala-soocid aan culays lahayn. */
+tbody tr:not(.empty-state):not(.loading-state) {
+    background: #fff;
+    transition: background-color 160ms ease;
+}
+
+tbody tr:not(.empty-state):not(.loading-state):nth-child(even) {
+    background: #f8faf8;
+}
+
+tbody tr:not(.empty-state):not(.loading-state):hover {
+    background: #edf4ef;
+}
+
+tbody th,
 tbody td {
-    color: #68766e;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid #e9eee9;
+    vertical-align: middle;
 }
 
-tbody td:last-child {
+tbody th[scope="row"] {
+    border-left: 3px solid transparent;
     color: var(--ink);
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+tbody tr:not(.empty-state):not(.loading-state):hover th[scope="row"] {
+    border-left-color: #6f927a;
+}
+
+tbody tr:not(.empty-state):not(.loading-state) td:not(.expense-actions) {
+    color: #64736a;
+    font-size: 13px;
+}
+
+tbody tr:not(.empty-state):not(.loading-state) td:nth-child(3) {
+    color: #7b877f;
+    white-space: nowrap;
+}
+
+tbody tr:not(.empty-state):not(.loading-state) td:nth-child(4) {
+    color: var(--ink);
     text-align: right;
+    font-size: 14px;
+    font-weight: 700;
     font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+tbody tr:not(.empty-state):not(.loading-state):last-child th,
+tbody tr:not(.empty-state):not(.loading-state):last-child td {
+    border-bottom: 0;
+}
+
+tbody .empty-state td {
+    position: relative;
+    padding: 34px 16px;
+    color: var(--muted);
+    text-align: center;
+    vertical-align: middle;
+    background: linear-gradient(180deg, #fff, #fbfcfa);
+}
+
+tbody .loading-state td {
+    padding: 30px 16px;
+    color: var(--muted);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    border: 2px solid #dce6dd;
+    border-top-color: var(--green);
+    border-radius: 50%;
+    vertical-align: -4px;
+    animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.empty-state strong,
+.empty-state span {
+    display: block;
+}
+
+.empty-state strong {
+    margin-bottom: 5px;
+    color: var(--ink);
+    font-size: 14px;
+}
+
+.empty-state span {
+    color: #849087;
+    font-size: 12px;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border: 1px solid #dce8df;
+    border-radius: 999px;
+    background: #eef4ef;
+    color: #365d45;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+.category-badge[data-category="transport"] {
+    border-color: #d8e4ef;
+    background: #eef4f8;
+    color: #3d607b;
+}
+
+.category-badge[data-category="shopping"] {
+    border-color: #eadfbe;
+    background: #f8f3e7;
+    color: #75602b;
+}
+
+.category-badge[data-category="bills"] {
+    border-color: #eedbd4;
+    background: #fbf0ec;
+    color: #914b38;
+}
+
+.category-badge[data-category="other"] {
+    border-color: #e1dce9;
+    background: #f3f0f7;
+    color: #625271;
+}
+
+/* Tiirka ficillada iyo badhamadiisa. */
+tbody .expense-actions {
+    width: 1%;
+    text-align: left;
+    white-space: nowrap;
+}
+
+tbody .expense-actions button {
+    min-height: 34px;
+    margin: 2px 4px 2px 0;
+    padding: 7px 11px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+tbody .edit-expense,
+tbody .save-edit {
+    background: #52765d;
+}
+
+tbody .edit-expense:hover,
+tbody .save-edit:hover {
+    background: #3d6049;
+}
+
+tbody .delete-expense,
+tbody .confirm-delete {
+    background: #a64e38;
+}
+
+tbody .cancel-edit,
+tbody .cancel-row-action {
+    background: #68766e;
+}
+
+tbody .expense-actions small {
+    display: block;
+    max-width: 180px;
+    color: var(--rust);
+    white-space: normal;
+}
+
+tbody input,
+tbody select {
+    min-width: 105px;
+    min-height: 36px;
+    padding: 6px 8px;
+    font-size: 12px;
 }
 
 footer {
@@ -386,7 +594,7 @@ footer p {
     }
 
     #transactions table {
-        min-width: 460px;
+        min-width: 600px;
     }
 }
 
@@ -423,5 +631,9 @@ footer p {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+
+    .loading-spinner {
+        animation: none;
     }
 }

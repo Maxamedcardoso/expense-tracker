@@ -90,10 +90,22 @@
                         <th scope="col">Category</th>
                         <th scope="col">Date</th>
                         <th scope="col">Amount</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-
+                    <tr id="loading-expenses" class="loading-state" hidden>
+                        <td colspan="5">
+                            <span class="loading-spinner" aria-hidden="true"></span>
+                            <span role="status">Loading expenses...</span>
+                        </td>
+                    </tr>
+                    <tr id="empty-expenses" class="empty-state">
+                        <td colspan="5">
+                            <strong>No expenses yet</strong>
+                            <span>Add an expense to start your list.</span>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </section>
@@ -104,6 +116,7 @@
         <p>Simple spending, clearer choices.</p>
     </footer>
     <!-- defer wuxuu sugayaa inta HTML-ku dhammaanayo ka hor inta JavaScript-ku shaqayn. -->
+    <script src="storage.js" defer></script>
     <script src="script.js" defer></script>
 </body>
 
